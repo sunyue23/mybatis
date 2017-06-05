@@ -1,3 +1,5 @@
+package com.kingnet.sy.test1;
+
 /**
  * Created by 注定孤独终老 on 2017/6/4.
  */
@@ -28,5 +30,14 @@ public class User {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                '}';
     }
 }
