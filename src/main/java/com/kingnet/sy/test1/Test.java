@@ -30,7 +30,7 @@ public class Test {
         SqlSession session = sessionFactory.openSession();
 
         //映射sql 的标识字符串
-        String statement = "com.kingnet.sy.userMapper.getUser";
+        String statement = "com.kingnet.sy.test1.userMapper.getUser";
 
         //执行查询返回一个唯一user对象的sql
         User user = session.selectOne(statement,2);

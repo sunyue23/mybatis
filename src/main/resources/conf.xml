@@ -2,6 +2,16 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+    <!--读取数据库的属性-->
+    <properties resource="db.properties">
+    </properties>
+
+    <!--配置实体类的别名-->
+    <typeAliases>
+        <!--<typeAlias type="com.kingnet.sy.test1.User" alias="User"/>-->
+        <package name="com.kingnet.sy.test1"/>
+    </typeAliases>
+
     <!--
         development : 开发模式
         work：工作模式
@@ -11,10 +21,10 @@
         <environment id="development">
             <transactionManager type="JDBC" />
             <dataSource type="POOLED">
-                <property name="driver" value="com.mysql.jdbc.Driver" />
-                <property name="url" value="jdbc:mysql://localhost:3306/mybatis" />
-                <property name="username" value="root" />
-                <property name="password" value="" />
+                <property name="driver" value="${driver}" />
+                <property name="url" value="${url}" />
+                <property name="username" value="${username}" />
+                <property name="password" value="${password}" />
             </dataSource>
         </environment>
     </environments>
