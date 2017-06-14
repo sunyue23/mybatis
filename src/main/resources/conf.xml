@@ -36,5 +36,6 @@
         <mapper resource="mapper/userMapper2.xml"/>
         <mapper class="com.kingnet.sy.test3.UserMapper"/>
         <mapper resource="mapper/orderMapper.xml"/>
+        <mapper resource="mapper/ClassMapper.xml"/>
     </mappers>
 </configuration>
