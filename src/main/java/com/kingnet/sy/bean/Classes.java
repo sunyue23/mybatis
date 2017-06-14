@@ -1,5 +1,7 @@
 package com.kingnet.sy.bean;
 
+import java.util.List;
+
 /**
  * Created by sunyue on 2017/6/14.
  */
@@ -7,9 +9,18 @@ public class Classes {
     private int id;
     private String name;
     private Teacher teacher;
+    private List<Student> students;
 
     public int getId() {
         return id;
+    }
+
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
     }
 
     public void setId(int id) {
@@ -38,6 +49,7 @@ public class Classes {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", teacher=" + teacher +
+                ", students=" + students +
                 '}';
     }
 }

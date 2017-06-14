@@ -2,17 +2,17 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.kingnet.sy.test5.ClassMapper">
+<mapper namespace="com.kingnet.sy.test6.ClassMapper2">
     <!--
-        根据班级id查询班级信息（带老师信息）
+        根据班级id查询班级信息,包括老师，学生
     -->
     <!--
         #1.联表查询
-        select * from class c, teacher t where c.teacher_id = t.t_id and c.c_id =1;
-        嵌套结果：使用嵌套结果映射来处理重复的联合结果的子集 封装联表查询的数据（去除重复的元素）
+        select * from class c, teacher t ，student s where c.teacher_id = t.t_id and c.c_id = s.class_id and c.c_id =1;
+        嵌套结果：使用嵌套结果映射来处理重复的联合结果的子集
     -->
     <select id="getClass" parameterType="int" resultMap="ClassResultMap">
-        select * from class c, teacher t where c.teacher_id = t.t_id and c.c_id =#{id};
+        select * from class c, teacher t ,student s where c.teacher_id = t.t_id and c.c_id = s.class_id and c.c_id  =#{id}
     </select>
     <resultMap id="ClassResultMap" type="Classes">
         <id property="id" column="c_id"></id>
@@ -21,11 +21,16 @@
             <id property="id" column="t_id"/>
             <result property="name" column="t_name"/>
         </association>
+        <collection property="students" ofType="Student">
+            <id property="id" column="s_id"/>
+            <result property="name" column="s_name"/>
+        </collection>
     </resultMap>
     <!--
-        #2执行两次查询
+        #2执行三次次查询
         select * from class where c_id =1 ;//teacher_id=1
-        selct * from teacher where t_id = 1;//使用上面得到的teacher_id
+        select * from teacher where t_id = 1;//使用上面得到的teacher_id
+        select * from student where class_id =1;//是第一个查询得到的c_id字段的值
     -->
     <select id="getClass2" parameterType="int" resultMap="ClassResultMap2">
         select * from class where c_id = #{id}
@@ -35,8 +40,13 @@
         <result property="name" column="c_name"/>
         <association property="teacher" column="teacher_id" select="getTeacher">
         </association>
+        <collection property="students" column="c_id" select="getStudent"></collection>
     </resultMap>
-    <select id="getTeacher" parameterType="int" resultType="Teacher">
+    <!--parameterType可以不写-->
+    <select id="getTeacher"  resultType="Teacher">
         select t_id id,t_name name from teacher where t_id = #{id}
+    </select>
+    <select id="getStudent" parameterType="int" resultType="Student">
+        select s_id id,s_name name from student where class_id =#{id}
     </select>
 </mapper>
