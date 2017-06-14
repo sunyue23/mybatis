@@ -1,5 +1,6 @@
-package com.kingnet.sy.test2;
+package com.kingnet.sy.test3;
 
+import com.kingnet.sy.test3.User;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
@@ -10,6 +11,7 @@ import java.util.List;
 /**
  * Created by sunyue on 2017/6/6.
  */
+
 public interface UserMapper {
 
     @Insert("insert into users(name,age) VALUES (#{name},#{age})")

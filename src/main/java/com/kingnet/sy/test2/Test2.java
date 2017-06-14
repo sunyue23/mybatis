@@ -1,6 +1,7 @@
 package com.kingnet.sy.test2;
 
 
+import com.kingnet.sy.test3.UserMapper;
 import com.kingnet.sy.util.MybatisUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -14,8 +15,6 @@ import java.util.List;
  */
 public class Test2 {
 
-    public Test2() throws IOException {
-    }
 
 
     @Test
@@ -76,15 +75,5 @@ public class Test2 {
         System.out.println(users);
     }
 
-    @Test
-    public void testAdd2(){
-        SqlSessionFactory sessionFactory = MybatisUtils.getSessionFactory();
-        SqlSession session = sessionFactory.openSession(true);
 
-        UserMapper mapper = session.getMapper(UserMapper.class);
-        int add = mapper.add(new User(-1, "liliang", 25));
-        session.close();
-        System.out.println(add);
-
-    }
 }

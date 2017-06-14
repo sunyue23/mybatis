@@ -13,7 +13,6 @@ public class MybatisUtils {
     public static SqlSessionFactory getSessionFactory() {
         String resource = "conf.xml";
 
-
         InputStream is = Test.class.getClassLoader().getResourceAsStream(resource);
         SqlSessionFactory sessionFactory = new SqlSessionFactoryBuilder().build(is);
         return sessionFactory;
