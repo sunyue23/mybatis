@@ -9,7 +9,6 @@
     <!--配置实体类的别名-->
     <typeAliases>
         <!--<typeAlias type="com.kingnet.sy.test1.User" alias="User"/>-->
-        <package name="com.kingnet.sy.test1"/>
         <package name="com.kingnet.sy.bean"/>
     </typeAliases>
 
@@ -38,5 +37,7 @@
         <mapper resource="mapper/orderMapper.xml"/>
         <mapper resource="mapper/ClassMapper.xml"/>
         <mapper resource="mapper/ClassMapper2.xml"/>
+        <mapper resource="mapper/duserMapper.xml"/>
+        <mapper resource="mapper/puserMapper.xml"/>
     </mappers>
 </configuration>

@@ -1,7 +1,7 @@
-package com.kingnet.sy.test1;
+package com.kingnet.sy.bean;
 
 /**
- * Created by 注定孤独终老 on 2017/6/4.
+ * Created by sunyue on 2017/6/15.
  */
 public class User {
     private int id;
